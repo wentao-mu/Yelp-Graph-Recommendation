@@ -3,6 +3,12 @@ import argparse, os, json, pandas as pd, numpy as np, torch
 import torch.nn as nn, torch.optim as optim
 from utils import set_seed, build_user_pos_items, sample_neg, get_device
 from metrics import recall_at_k, ndcg_at_k
+from cold_start_utils import (
+    load_interactions,
+    compute_item_frequencies,
+    make_frequency_buckets,
+    evaluate_cold_start_from_embeddings,
+)
 
 class LightGCN(nn.Module):
     def __init__(self, n_users, n_items, dim=64, n_layers=3):
@@ -92,10 +98,41 @@ def parse_args():
     ap.add_argument("--seed", type=int, default=42)
     return ap.parse_args()
 
+def run_cold_start_eval_lightgcn(args, model, A_hat, train_pos, test_df):
+    inter = load_interactions(args.data_dir)
+    freq = compute_item_frequencies(inter)
+    buckets = make_frequency_buckets(freq, boundaries=(1, 3, 10, 10**9))
+
+    with torch.no_grad():
+        E_u, E_i = model.propagate(A_hat)
+        user_emb = E_u.detach().cpu().numpy()
+        item_emb = E_i.detach().cpu().numpy()
+
+    results = evaluate_cold_start_from_embeddings(
+        user_emb=user_emb,
+        item_emb=item_emb,
+        train_pos=train_pos,
+        test_df=test_df,
+        buckets=buckets,
+        Ks=(10,),
+    )
+
+    print("=== LightGCN Cold-Start / Long-Tail Analysis (by item freq) ===")
+    for name, stats in results.items():
+        print(
+            f"Bucket {name}: "
+            f"num_users={stats['num_users']}, "
+            f"Recall@10={stats['Recall@10']:.4f}, "
+            f"NDCG@10={stats['NDCG@10']:.4f}"
+        )
+
 def main():
     args = parse_args()
     set_seed(args.seed)
     device = get_device()
+
+    if device.type == "mps":
+        device = torch.device("cpu")
 
     train = pd.read_csv(os.path.join(args.data_dir, "train.csv"))
     val = pd.read_csv(os.path.join(args.data_dir, "val.csv"))
@@ -151,6 +188,7 @@ def main():
 
     test_metrics = evaluate(model, A_hat, train_pos, test, n_items, Ks=(10,))
     print(f"[TEST] {test_metrics}")
-
+    run_cold_start_eval_lightgcn(args, model, A_hat, train_pos, test)
+    
 if __name__ == "__main__":
     main()

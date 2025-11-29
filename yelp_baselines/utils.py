@@ -21,4 +21,12 @@ def sample_neg(user_pos_items, n_items, u, num=1):
     return res
 
 def get_device():
-    return torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if torch.cuda.is_available():
+        dev = torch.device("cuda")
+    elif torch.backends.mps.is_available() and torch.backends.mps.is_built():
+        dev = torch.device("mps")
+    else:
+        dev = torch.device("cpu")
+
+    print(f"[device] using {dev}") 
+    return dev

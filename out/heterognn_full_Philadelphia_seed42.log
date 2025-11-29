@@ -1,0 +1,45 @@
+[device] using mps
+[HeteroGNN] sparse ops not supported on MPS, falling back to CPU.
+#users=208807, #items=14271, #cats=1023
+[Epoch 5] loss=0.6926 val_Recall@10=0.0050 val_NDCG@10=0.0026
+[Epoch 10] loss=0.6919 val_Recall@10=0.0096 val_NDCG@10=0.0047
+[Epoch 15] loss=0.6900 val_Recall@10=0.0090 val_NDCG@10=0.0043
+[Epoch 20] loss=0.6865 val_Recall@10=0.0088 val_NDCG@10=0.0042
+[Epoch 25] loss=0.6806 val_Recall@10=0.0094 val_NDCG@10=0.0042
+[Epoch 30] loss=0.6731 val_Recall@10=0.0105 val_NDCG@10=0.0048
+[Epoch 35] loss=0.6613 val_Recall@10=0.0106 val_NDCG@10=0.0050
+[Epoch 40] loss=0.6477 val_Recall@10=0.0111 val_NDCG@10=0.0058
+[Epoch 45] loss=0.6306 val_Recall@10=0.0111 val_NDCG@10=0.0062
+[Epoch 50] loss=0.6103 val_Recall@10=0.0112 val_NDCG@10=0.0062
+[Epoch 55] loss=0.5920 val_Recall@10=0.0115 val_NDCG@10=0.0065
+[Epoch 60] loss=0.5677 val_Recall@10=0.0122 val_NDCG@10=0.0072
+[Epoch 65] loss=0.5417 val_Recall@10=0.0125 val_NDCG@10=0.0078
+[Epoch 70] loss=0.5219 val_Recall@10=0.0139 val_NDCG@10=0.0079
+[Epoch 75] loss=0.5008 val_Recall@10=0.0142 val_NDCG@10=0.0077
+[Epoch 80] loss=0.4845 val_Recall@10=0.0129 val_NDCG@10=0.0082
+[Epoch 85] loss=0.4561 val_Recall@10=0.0135 val_NDCG@10=0.0082
+[Epoch 90] loss=0.4462 val_Recall@10=0.0139 val_NDCG@10=0.0081
+[Epoch 95] loss=0.4345 val_Recall@10=0.0150 val_NDCG@10=0.0082
+[Epoch 100] loss=0.4207 val_Recall@10=0.0151 val_NDCG@10=0.0068
+[Epoch 105] loss=0.4005 val_Recall@10=0.0144 val_NDCG@10=0.0065
+[Epoch 110] loss=0.4050 val_Recall@10=0.0140 val_NDCG@10=0.0064
+[Epoch 115] loss=0.3890 val_Recall@10=0.0141 val_NDCG@10=0.0064
+[Epoch 120] loss=0.3845 val_Recall@10=0.0131 val_NDCG@10=0.0061
+[Epoch 125] loss=0.3826 val_Recall@10=0.0130 val_NDCG@10=0.0068
+[Epoch 130] loss=0.3761 val_Recall@10=0.0131 val_NDCG@10=0.0068
+[Epoch 135] loss=0.3661 val_Recall@10=0.0132 val_NDCG@10=0.0068
+[Epoch 140] loss=0.3697 val_Recall@10=0.0134 val_NDCG@10=0.0066
+[Epoch 145] loss=0.3564 val_Recall@10=0.0145 val_NDCG@10=0.0069
+[Epoch 150] loss=0.3533 val_Recall@10=0.0138 val_NDCG@10=0.0067
+[Epoch 155] loss=0.3445 val_Recall@10=0.0135 val_NDCG@10=0.0067
+[Epoch 160] loss=0.3420 val_Recall@10=0.0135 val_NDCG@10=0.0071
+[Epoch 165] loss=0.3330 val_Recall@10=0.0135 val_NDCG@10=0.0074
+[Epoch 170] loss=0.3377 val_Recall@10=0.0136 val_NDCG@10=0.0080
+[Epoch 175] loss=0.3339 val_Recall@10=0.0136 val_NDCG@10=0.0080
+[Epoch 180] loss=0.3242 val_Recall@10=0.0143 val_NDCG@10=0.0082
+[Epoch 185] loss=0.3251 val_Recall@10=0.0143 val_NDCG@10=0.0078
+[Epoch 190] loss=0.3227 val_Recall@10=0.0150 val_NDCG@10=0.0083
+[Epoch 195] loss=0.3120 val_Recall@10=0.0167 val_NDCG@10=0.0082
+[Epoch 200] loss=0.3252 val_Recall@10=0.0171 val_NDCG@10=0.0081
+Best val metrics: {'Recall@10': 0.017097851393093392, 'NDCG@10': 0.008064351518204477}
+[TEST] {'Recall@10': 0.003955806079298108, 'NDCG@10': 0.0019599132774062956}
