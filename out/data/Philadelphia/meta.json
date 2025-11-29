@@ -1,0 +1,9 @@
+{
+  "n_users": 208807,
+  "n_items": 14271,
+  "n_categories": 1023,
+  "city": "Philadelphia",
+  "city_mode": "exact",
+  "state": null,
+  "min_stars": 4
+}

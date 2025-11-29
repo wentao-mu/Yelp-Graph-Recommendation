@@ -1,0 +1,26 @@
+# Hydra config for Yelp one-click pipeline
+# Edit paths below to your local dataset files.
+
+dataset:
+  business_json: "/path/to/business.json"
+  review_json: "/path/to/review.json"
+  user_json: "/path/to/user.json"
+  city: "Las Vegas"
+  min_stars: 4
+
+out:
+  root: "out"          # all outputs under this dir
+  global_dir: "${out.root}/global"
+  cities_dir: "${out.root}/cities"
+  data_dir: "${out.root}/data/${dataset.city}"
+  graph_dir: "${out.root}/graphs/${dataset.city}"
+  reports_dir: "${out.root}/reports/${dataset.city}"
+
+train:
+  epochs: 10
+  dim: 64
+  lr_mf: 0.005
+  lr_lgcn: 0.001
+  l2: 0.0001
+  layers: 3
+  neg_per_pos: 1

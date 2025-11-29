@@ -1,0 +1,9 @@
+{
+  "n_users": 208807,
+  "n_items": 14271,
+  "user_interaction_degree_mean": 3.1527008194169737,
+  "business_interaction_degree_mean": 46.12893280078481,
+  "user_friend_degree_mean": 13.350418507444155,
+  "user_isolation_rate": 0.0,
+  "item_isolation_rate": 0.0
+}
